@@ -4,6 +4,9 @@ package com.opencart;
 import com.opencart.managers.DataFakerManager;
 import com.opencart.managers.DriverManager;
 import com.opencart.managers.ScrollManager;
+import com.opencart.pageobjects.AccountCreatedPage;
+import com.opencart.pageobjects.HomePage;
+import com.opencart.pageobjects.RegisterPage;
 import org.openqa.selenium.*;
 
 public class TestRunner {
@@ -14,13 +17,42 @@ public class TestRunner {
         // Define a driver object that will be used for future actions.
         WebDriver driver = DriverManager.getInstance().getDriver();
 
+        driver.get("https://andreisecuqa.host/");
+
+        HomePage homePage = new HomePage(driver);
+        homePage.navigateToRegisterPageFromHeaderMenu();
+
+        String firstName = DataFakerManager.getRandomName();
+        String lastName = DataFakerManager.getRandomName();
+        String email = DataFakerManager.getRandomEmail();
+        String password = DataFakerManager.getRandomPassword(21, 22);
+
+        RegisterPage registerPage = new RegisterPage(driver);
+        registerPage.fillInTheRegisterForm(firstName, lastName, email, password);
+        registerPage.switchOnThePrivacyToggle(driver);
+        registerPage.clickOnContinueButton();
+        Thread.sleep(5000);
+        System.out.println(driver.getCurrentUrl());
+
+        AccountCreatedPage accountCreatedPage = new AccountCreatedPage(driver);
+        accountCreatedPage.logOutFromTheAccount();
+        Thread.sleep(2000);
+        System.out.println(driver.getCurrentUrl());
+
+        driver.quit();
+        System.out.println("The driver is closed");
+
+
+
+    }
+}
+
+/*
         driver.get("https://protv.md/");
 
         String currentWindowName = driver.getWindowHandle();
 
         driver.switchTo().newWindow(WindowType.TAB);
-
-        driver.get("https://andreisecuqa.host/");
 
         WebElement accountIcon = driver.findElement(By.xpath("//i[@class='fa-solid fa-user']"));
         accountIcon.click();
@@ -71,10 +103,7 @@ public class TestRunner {
         driver.quit();
 
         System.out.println("The driver is closed");
-    }
-}
-
-
+ */
 
 
 /*import io.github.bonigarcia.wdm.WebDriverManager;
