@@ -17,9 +17,10 @@ public class DriverManager {
         switch (webDriverType.toUpperCase()) {
             case "CHROME":
              //   WebDriverManager.chromedriver().setup();
-                ChromeOptions options = new ChromeOptions();
-                options.addArguments("--remote-allow-origins=*");
-                driver = new ChromeDriver(options);
+//                ChromeOptions options = new ChromeOptions();
+//                options.addArguments("--remote-allow-origins=*");
+                driver = new ChromeDriver();
+//                driver = new ChromeDriver(options);
                 System.out.println("The Chrome Driver was initiated!");
                 break;
             case "FIREFOX":
@@ -57,5 +58,12 @@ public class DriverManager {
             DriverManager.getInstance();
         }
         return driver;
+    }
+    // driver-ul si instanta se seteaza cu null pentru a pregati browser-ul de noua sesiune
+    public void quitTheDriver(){
+        driver.quit();
+        driver = null;
+        instance = null;
+        System.out.println("The Browser is closed and session is set to null");
     }
 }
