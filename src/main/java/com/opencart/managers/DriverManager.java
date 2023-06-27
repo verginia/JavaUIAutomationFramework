@@ -17,10 +17,10 @@ public class DriverManager {
         switch (webDriverType.toUpperCase()) {
             case "CHROME":
              //   WebDriverManager.chromedriver().setup();
-//                ChromeOptions options = new ChromeOptions();
-//                options.addArguments("--remote-allow-origins=*");
-                driver = new ChromeDriver();
-//                driver = new ChromeDriver(options);
+             ChromeOptions options = new ChromeOptions();
+                options.addArguments("--incognito");
+//               options.addArguments("--remote-allow-origins=*")
+               driver = new ChromeDriver(options);
                 System.out.println("The Chrome Driver was initiated!");
                 break;
             case "FIREFOX":
