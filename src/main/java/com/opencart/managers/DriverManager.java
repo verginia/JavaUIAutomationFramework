@@ -20,6 +20,7 @@ public class DriverManager {
              ChromeOptions options = new ChromeOptions();
                 options.addArguments("--incognito");
 //               options.addArguments("--remote-allow-origins=*")
+//               options.addArguments("--headless")
                driver = new ChromeDriver(options);
                 System.out.println("The Chrome Driver was initiated!");
                 break;
