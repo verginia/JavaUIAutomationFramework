@@ -17,8 +17,8 @@ public class LoginPageSteps {
         loginPage.fillInTheLoginFields(credentialsList.get(0), credentialsList.get(1));
     }
 
-    @When("login button is clicked")
-    public void loginButtonIsClicked() {
-        loginPage.clickOnTheLoginButton();
-    }
+//    @When("login button is clicked")
+//    public void loginButtonIsClicked() {
+//        loginPage.clickOnTheLoginButton();
+//    }
 }

@@ -9,7 +9,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
 public class DriverManager {
-    private static String webDriverType = "Chrome";
+    private static String webDriverType = ConfigReaderManager.getProperty("browserType");
     private static DriverManager instance;
     private WebDriver driver;
 
@@ -18,7 +18,9 @@ public class DriverManager {
             case "CHROME":
              //   WebDriverManager.chromedriver().setup();
              ChromeOptions options = new ChromeOptions();
-                options.addArguments("--incognito");
+             if(ConfigReaderManager.getProperty("isIncognitoChromeEnabled").equals("true")){
+                 options.addArguments("--incognito");
+             }
 //               options.addArguments("--remote-allow-origins=*")
 //               options.addArguments("--headless")
                driver = new ChromeDriver(options);
