@@ -22,20 +22,20 @@ public class RegisterPageSteps {
         registerPage.fillInTheRegisterForm(firstName, lastName, email, password);
     }
 
-    @And("the privacyToggle is enabled")
-    public void thePrivacyToggleIsEnabled() {
-        try {
-            registerPage.switchOnThePrivacyToggle(driver);
-        } catch (InterruptedException e) {
-            System.out.println("Error!");
-        }
-    }
-
-    @And("continueButton is clicked")
-    public void continueButtonIsClicked() throws InterruptedException {
-        registerPage.clickOnContinueButton();
-
-    }
+//    @And("the privacyToggle is enabled")
+//    public void thePrivacyToggleIsEnabled() {
+//        try {
+//            registerPage.switchOnThePrivacyToggle(driver);
+//        } catch (InterruptedException e) {
+//            System.out.println("Error!");
+//        }
+//    }
+//
+//    @And("continueButton is clicked")
+//    public void continueButtonIsClicked() throws InterruptedException {
+//        registerPage.clickOnContinueButton();
+//
+//    }
 
     @When("register form is populated with the following details:")
     public void registerFormIsPopulatedWithTheFollowingDetails(Map<String, String> userDetailsMap) {
